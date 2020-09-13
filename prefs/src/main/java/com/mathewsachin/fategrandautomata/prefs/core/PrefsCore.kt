@@ -3,14 +3,14 @@ package com.mathewsachin.fategrandautomata.prefs.core
 import com.mathewsachin.fategrandautomata.StorageDirs
 import com.mathewsachin.fategrandautomata.prefs.R
 import com.mathewsachin.fategrandautomata.scripts.enums.BattleNoblePhantasmEnum
-import com.mathewsachin.fategrandautomata.scripts.enums.BraveChainEnum
 import com.mathewsachin.fategrandautomata.scripts.enums.GameServerEnum
 import com.mathewsachin.fategrandautomata.scripts.enums.ScriptModeEnum
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PrefsCore @Inject constructor(
+class PrefsCore
+@Inject constructor(
     val maker: PrefMaker,
     val storageDirs: StorageDirs
 ) {
@@ -59,11 +59,6 @@ class PrefsCore @Inject constructor(
 
     val recordScreen = maker.bool(R.string.pref_record_screen)
 
-    val braveChains = maker.enum(
-        R.string.pref_brave_chains,
-        BraveChainEnum.None
-    )
-
     val skillDelay = maker.int(R.string.pref_skill_delay, 500)
 
     val screenshotDrops = maker.bool(R.string.pref_screenshot_drops)
@@ -79,7 +74,7 @@ class PrefsCore @Inject constructor(
 
     val supportSwipesPerUpdate = maker.int(R.string.pref_support_swipes_per_update, 10)
 
-    val supportMaxUpdates = maker.int(R.string.pref_support_max_updates, 3)
+    val supportMaxUpdates = maker.int(R.string.pref_support_max_updates, 5)
 
     val debugMode = maker.bool(R.string.pref_debug_mode)
 
@@ -102,6 +97,8 @@ class PrefsCore @Inject constructor(
     val autoStartService = maker.bool(R.string.pref_auto_start_service)
 
     val showTextBoxForAutoSkillCmd = maker.bool(R.string.pref_auto_skill_cmd_text)
+
+    val waitBeforeTurn = maker.int(R.string.pref_wait_before_turn, 500)
 
     private val autoSkillMap = mutableMapOf<String, AutoSkillPrefsCore>()
 

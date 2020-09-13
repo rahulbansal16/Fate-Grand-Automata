@@ -75,8 +75,6 @@ class PreferencesImpl @Inject constructor(
 
     override val recordScreen by prefs.recordScreen
 
-    override val braveChains by prefs.braveChains
-
     override val skillDelay by prefs.skillDelay.map { it.milliseconds }
 
     override val screenshotDrops by prefs.screenshotDrops
@@ -84,6 +82,8 @@ class PreferencesImpl @Inject constructor(
     override val canPauseScript by prefs.canPauseScript
 
     override val stageCounterSimilarity by prefs.stageCounterSimilarity.map { it / 100.0 }
+
+    override val waitBeforeTurn by prefs.waitBeforeTurn.map { it.milliseconds }
 
     private val autoSkillMap = mutableMapOf<String, IAutoSkillPreferences>()
 

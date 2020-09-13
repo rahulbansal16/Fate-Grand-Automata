@@ -62,7 +62,7 @@
         app:icon="@drawable/ic_screenshot"
         app:key="@string/pref_screenshot_drops"
         app:title="@string/p_screenshot_drops"
-        app:summary="@string/p_experimental" />
+        app:summary="@string/p_screenshot_drops_summary" />
 
     <SwitchPreferenceCompat
         app:defaultValue="true"
@@ -77,15 +77,6 @@
         app:icon="@drawable/ic_boost"
         app:key="@string/pref_boost_item"
         app:title="@string/p_boost_item"
-        app:useSimpleSummaryProvider="true" />
-
-    <ListPreference
-        app:defaultValue="None"
-        app:entries="@array/brave_chain_labels"
-        app:entryValues="@array/brave_chain_values"
-        app:icon="@drawable/ic_crown"
-        app:key="@string/pref_brave_chains"
-        app:title="@string/p_brave_chains"
         app:useSimpleSummaryProvider="true" />
 
     <SwitchPreferenceCompat

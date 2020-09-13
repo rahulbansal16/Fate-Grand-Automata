@@ -1,6 +1,6 @@
 package com.mathewsachin.fategrandautomata.scripts.modules
 
-import com.mathewsachin.fategrandautomata.scripts.IFGAutomataApi
+import com.mathewsachin.fategrandautomata.scripts.IFgoAutomataApi
 import com.mathewsachin.fategrandautomata.scripts.enums.GameServerEnum
 import com.mathewsachin.fategrandautomata.scripts.prefs.IPreferences
 import com.mathewsachin.libautomata.Location
@@ -10,9 +10,9 @@ import com.mathewsachin.libautomata.dagger.ScriptScope
 import javax.inject.Inject
 import kotlin.time.seconds
 
-fun IFGAutomataApi.needsToRetry() = images.retry in Game.retryRegion
+fun IFgoAutomataApi.needsToRetry() = images.retry in Game.retryRegion
 
-fun IFGAutomataApi.retry() {
+fun IFgoAutomataApi.retry() {
     Game.retryRegion.click()
 
     2.seconds.wait()
@@ -66,6 +66,7 @@ class Game @Inject constructor(val prefs: IPreferences) {
 
         val supportRegionToolSearchRegion = Region(2100, 0, 370, 1440)
         val supportDefaultBounds = Region(76, 0, 2356, 428)
+        val supportDefaultCeBounds = Region(76, 270, 378, 150)
         val supportExtraRegion = Region(1200, 200, 130, 130)
         val supportNotFoundRegion = Region(468, 708, 100, 90)
 
@@ -105,6 +106,7 @@ class Game @Inject constructor(val prefs: IPreferences) {
         val resultFriendRequestRegion = Region(660, 120, 140, 160)
         val resultFriendRequestRejectClick = Location(600, 1200)
         val resultQuestRewardRegion = Region(1630, 140, 370, 250)
+        val resultClick = Location(1600, 1350)
         val resultNextClick = Location(2200, 1350) // see docs/quest_result_next_click.png
         val resultDropScrollbarRegion = Region(2260, 230, 100, 88)
 

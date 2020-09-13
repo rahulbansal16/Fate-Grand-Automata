@@ -1,6 +1,6 @@
 package com.mathewsachin.fategrandautomata.scripts.modules
 
-import com.mathewsachin.fategrandautomata.scripts.IFGAutomataApi
+import com.mathewsachin.fategrandautomata.scripts.IFgoAutomataApi
 import com.mathewsachin.fategrandautomata.scripts.enums.BattleNoblePhantasmEnum
 import com.mathewsachin.fategrandautomata.scripts.enums.BraveChainEnum
 import com.mathewsachin.fategrandautomata.scripts.enums.CardAffinityEnum
@@ -13,7 +13,7 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
-class Card(fgAutomataApi: IFGAutomataApi) : IFGAutomataApi by fgAutomataApi {
+class Card(fgAutomataApi: IFgoAutomataApi) : IFgoAutomataApi by fgAutomataApi {
     private lateinit var autoSkill: AutoSkill
     private lateinit var battle: Battle
 
@@ -80,6 +80,7 @@ class Card(fgAutomataApi: IFGAutomataApi) : IFGAutomataApi by fgAutomataApi {
     private var commandCardGroups: List<List<CommandCard.Face>> = emptyList()
     private var commandCardGroupedWithNp: Map<CommandCard.NP, List<CommandCard.Face>> = emptyMap()
     private var firstNp: CommandCard.NP? = null
+    private var braveChainsThisTurn = BraveChainEnum.None
 
     private fun getCommandCards(): Map<CardScore, List<CommandCard.Face>> {
         data class CardResult(
@@ -127,7 +128,12 @@ class Card(fgAutomataApi: IFGAutomataApi) : IFGAutomataApi by fgAutomataApi {
         screenshotManager.useSameSnapIn {
             commandCards = getCommandCards()
 
-            if (prefs.braveChains != BraveChainEnum.None) {
+            val braveChainsPerWave = prefs.selectedAutoSkillConfig.braveChains
+            braveChainsThisTurn = if (braveChainsPerWave.isNotEmpty())
+                braveChainsPerWave[battle.state.runState.stage.coerceIn(braveChainsPerWave.indices)]
+            else BraveChainEnum.None
+
+            if (braveChainsThisTurn != BraveChainEnum.None) {
                 val supportGroup = CommandCard.Face.list
                     .filter { images.support in it.supportCheckRegion }
                 commandCardGroups = groupByFaceCard(supportGroup)
@@ -192,7 +198,7 @@ class Card(fgAutomataApi: IFGAutomataApi) : IFGAutomataApi by fgAutomataApi {
                 .addToClickList()
         }
 
-        when (prefs.braveChains) {
+        when (braveChainsThisTurn) {
             BraveChainEnum.AfterNP -> {
                 commandCardGroupedWithNp[firstNp]?.let { npGroup ->
                     pickCardsOrderedByPriority {
@@ -230,7 +236,7 @@ class Card(fgAutomataApi: IFGAutomataApi) : IFGAutomataApi by fgAutomataApi {
         else false
 
         if (rearrangeCards
-            && prefs.braveChains != BraveChainEnum.Avoid // Avoid: consecutive cards to be of different servants
+            && braveChainsThisTurn != BraveChainEnum.Avoid // Avoid: consecutive cards to be of different servants
             && prefs.castNoblePhantasm == BattleNoblePhantasmEnum.None
             && (toClick.size == 3 || (toClick.size == 2 && !isBeforeNP))
         ) {

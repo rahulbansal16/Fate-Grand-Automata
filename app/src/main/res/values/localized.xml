@@ -13,6 +13,7 @@
     <string name="auto_skill_support_any">Any</string>
 
     <string name="support_imgs_extracted">Support Images Extracted Successfully</string>
+    <string name="support_imgs_extract_failed">Couldn\'t extract support images</string>
     <string name="support_img_not_found">Unable to load image: %1$s. Put images in %2$s folder</string>
 
     <string name="auto_skill_list_no_items">No AutoSkill Items</string>
@@ -95,7 +96,6 @@
     <string name="p_auto_skill">Auto Skill</string>
     <string name="p_auto_skill_summary">Manage Auto Skill configs</string>
     <string name="p_more_options">More options</string>
-    <string name="p_update_available">Update Available</string>
 
     <string name="p_enable_refill">Enable Refill</string>
     <string name="p_repetitions">Repetitions</string>
@@ -138,9 +138,10 @@
     <string name="p_stop_on_ce_get_summary">First-time quest completion rewards and Bond CEs (Experimental)</string>
     <string name="p_experimental">Experimental</string>
     <string name="p_screenshot_drops">Screenshot Drops</string>
+    <string name="p_screenshot_drops_summary">Saved to \'Fate-Grand-Automata/drops\' folder</string>
     <string name="p_friend_summon_only">Friend Points Summons Only</string>
     <string name="p_boost_item">Boost Item</string>
-    <string name="p_brave_chains">Brave Chains (Experimental)</string>
+    <string name="p_brave_chains">Brave Chains</string>
     <string name="p_rearrange_cards">Rearrange Cards</string>
     <string name="p_auto_skill_cmd_text">Skill Command TextBox</string>
     <string name="p_auto_skill_cmd_text_summary">Show text-box for editing AutoSkill commands</string>
@@ -174,7 +175,9 @@
     <string name="p_fine_tune_wait_after_swiping">Wait after swiping (ms)</string>
     <string name="p_fine_tune_swipe_duration">Swipe duration (ms)</string>
     <string name="p_fine_tune_support_swipe_multiplier">Support Swipe Multiplier (%)</string>
+    <string name="p_fine_tune_wait">Wait</string>
     <string name="p_fine_tune_skill_delay">Skill Delay (ms)</string>
+    <string name="p_fine_tune_wait_before_turn">Wait before Turn (ms)</string>
     <string name="p_fine_tune_wait_multiplier">Wait Multiplier (%)</string>
 
     <string name="p_nav_refill">Refill</string>
