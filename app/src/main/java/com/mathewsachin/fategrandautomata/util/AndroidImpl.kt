@@ -28,6 +28,7 @@ class AndroidImpl @Inject constructor(
     val highlightManager: HighlightManager
 ) : IPlatformImpl {
     val service = service as ScriptRunnerService
+    
 
     override val windowRegion get() = cutoutManager.getCutoutAppliedRegion()
 
